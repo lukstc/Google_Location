@@ -5,11 +5,11 @@
 
 
 ## Info:
-- This is a simple python app using Google API to translate Address to Lag/Lng Translation or reverse.
+- This is a simple python app using Google Map API to translate Address to Lag/Lng Translation or reverse.
 ![img_app_demo](doc/img/add_demo.png)
 
 ## Memo:
-- if you don't have a Google API, you could get one from [here](https://developers.google.com/maps/documentation/geocoding/get-api-key)
+- if you don't have a Google API key yet, you could get one from [here](https://developers.google.com/maps/documentation/geocoding/get-api-key)
 - currently, the app will only fetch the best match (the first result)
 - next step: error handler
 
