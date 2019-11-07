@@ -6,7 +6,7 @@
 
 ## Info:
 - This is a simple python app using Google API to translate Address to Lag/Lng Translation or reverse.
-![img_app_demo](https://octodex.github.com/images/yaktocat.png)
+![img_app_demo](doc/img/add_demo.png)
 
 ## Memo:
 - if you don't have a Google API, you could get one from [here](https://developers.google.com/maps/documentation/geocoding/get-api-key)
