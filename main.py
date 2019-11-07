@@ -23,7 +23,8 @@ class Application(tk.Frame):
         lat_lng_frame.grid(row=1, column=0, padx=(10, 10))
         address_frame.grid(row=0, rowspan=2, column=1, padx=(10, 10),pady=(10, 10))
 
-        self.google_api_key = tk.StringVar(value=config.Google_API_Key)
+        self.google_api_key = tk.StringVar()
+        self.google_api_key.set(value=config.Google_API_Key)
         self.google_api_key_input = Entry(config_frame, textvariable=self.google_api_key, width=50)
         self.google_api_key_lb = tk.Label(config_frame, text='Google API KEY')
         self.close = tk.Button(top_side, text='Exit', command=self.master.destroy)
@@ -123,19 +124,19 @@ class Application(tk.Frame):
             feedback = response.read()
         results = json.loads(feedback)
         if results['status'] != 'OK':
-            self.get_lat_lng_result.set(value=str(results['status']))
+            self.get_lat_lng_result.set(value=str(results.get('status')))
+            print(results.get('status'))
         else:
             lat_lng = results['results'][0]['geometry']['location']
         # print(lat_lng)
         # print(str(lat_lng))
             self.get_lat_lng_result.set(value=str(lat_lng))
 
-
     def geocode_to_address(self):
         lat = self.input_lat.get()
         lng = self.input_lng.get()
         api_key = self.google_api_key.get()
-        url_string = "https://maps.googleapis.com/maps/api/geocode/json?latlng={lat},{lng}&key={api_key}".format(lat=lat,lng=lng, api_key=api_key)
+        url_string = "https://maps.googleapis.com/maps/api/geocode/json?latlng={lat},{lng}&key={api_key}".format(lat=lat, lng=lng, api_key=api_key)
         #print(url_string)
         with urllib.request.urlopen(url_string) as response:
             feedback = response.read()
